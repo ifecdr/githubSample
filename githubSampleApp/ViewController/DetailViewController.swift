@@ -17,7 +17,7 @@ class DetailViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        viewModel.fetchRepos()
+        //viewModel.fetchRepos()
     }
     
     func setup() {
@@ -59,18 +59,24 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
                 fatalError("Unable to create RepoTableViewCell")
             }
             let repo = viewModel.repos[indexPath.row]
-            cell.config(repo: repo)
+            cell.config(item: repo)
             return cell
         default:
             return UITableViewCell()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = indexPath.section
+        if section == 1 {
+            //Do something
+        }
+    }
 }
 
 extension DetailViewController: BiographyTableViewCellDelegate {
-    func getRepos() {
-        let user = viewModel.getUser()
-        //tableView.reloadSections(<#T##sections: IndexSet##IndexSet#>, with: <#T##UITableView.RowAnimation#>)
+    func getRepos(for searchStr: String) {
+        viewModel.fetchRepos(for: searchStr)
     }
     
     func getAvatar(img: String, completion: @escaping (Data?) -> ()) {

@@ -26,8 +26,8 @@
 		F7DCA2032399F9F10025A2D1 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DCA2022399F9F10025A2D1 /* UserSearchViewModel.swift */; };
 		F7DCA2052399FAB60025A2D1 /* ConstantUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DCA2042399FAB60025A2D1 /* ConstantUtils.swift */; };
 		F7DCA2072399FDF40025A2D1 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DCA2062399FDF40025A2D1 /* ApiServices.swift */; };
-		F7DCA209239A00540025A2D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DCA208239A00540025A2D1 /* User.swift */; };
-		F7DCA20B239A07450025A2D1 /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DCA20A239A07450025A2D1 /* UsersList.swift */; };
+		F7DCA209239A00540025A2D1 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DCA208239A00540025A2D1 /* Items.swift */; };
+		F7DCA20B239A07450025A2D1 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DCA20A239A07450025A2D1 /* ResultModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,8 +52,8 @@
 		F7DCA2022399F9F10025A2D1 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
 		F7DCA2042399FAB60025A2D1 /* ConstantUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantUtils.swift; sourceTree = "<group>"; };
 		F7DCA2062399FDF40025A2D1 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
-		F7DCA208239A00540025A2D1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		F7DCA20A239A07450025A2D1 /* UsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
+		F7DCA208239A00540025A2D1 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		F7DCA20A239A07450025A2D1 /* ResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +103,8 @@
 		F7DCA1ED2399E55A0025A2D1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F7DCA208239A00540025A2D1 /* User.swift */,
-				F7DCA20A239A07450025A2D1 /* UsersList.swift */,
+				F7DCA208239A00540025A2D1 /* Items.swift */,
+				F7DCA20A239A07450025A2D1 /* ResultModel.swift */,
 				023EE6E1239AC43000BA457E /* Repos.swift */,
 			);
 			path = Model;
@@ -247,11 +247,11 @@
 				F7DCA2052399FAB60025A2D1 /* ConstantUtils.swift in Sources */,
 				F7DCA2012399F8CB0025A2D1 /* UserTableViewCell.swift in Sources */,
 				023EE6E2239AC43000BA457E /* Repos.swift in Sources */,
-				F7DCA20B239A07450025A2D1 /* UsersList.swift in Sources */,
+				F7DCA20B239A07450025A2D1 /* ResultModel.swift in Sources */,
 				F7DCA2072399FDF40025A2D1 /* ApiServices.swift in Sources */,
 				02D2B10A239A55D800EE4A6C /* RepoTableViewCell.swift in Sources */,
 				F7DCA1DE2399E54B0025A2D1 /* UserSearchViewController.swift in Sources */,
-				F7DCA209239A00540025A2D1 /* User.swift in Sources */,
+				F7DCA209239A00540025A2D1 /* Items.swift in Sources */,
 				F7DCA1F62399E66C0025A2D1 /* Storyboarded.swift in Sources */,
 				F7DCA2032399F9F10025A2D1 /* UserSearchViewModel.swift in Sources */,
 				F7DCA1DA2399E54B0025A2D1 /* AppDelegate.swift in Sources */,

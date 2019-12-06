@@ -15,6 +15,9 @@ struct ConstantUtils {
     static let sortByRepo = "+repos"
     static let greaterThan = ":%3E"
     static let auth = "/authorizations"
+    static let repo = "/repositories"
+    static let topic = "?q=topic:"
+    static let user = "+user:"
     
     static func getUsersUrl(userStr: String) -> String {
         return base + search + users + userStr
@@ -23,4 +26,10 @@ struct ConstantUtils {
     static func getAuthUrl() -> String {
         return base + auth
     }
+    
+    static func getSearchUrl(searchKeyword: String, userKeyword: String) -> String {
+        return base + search + repo + topic + searchKeyword + user + userKeyword
+    }
+    
+    //https://api.github.com/search/repositories?q=topic:firebase+user:ant-design
 }

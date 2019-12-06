@@ -27,30 +27,16 @@ class UserTableViewCell: UITableViewCell {
             avatarImageView.image = UIImage(data: imgData)
         }
     }
-    var repoNumber: Int = 0 {
-        didSet{
-            repoNoLabel.text = String(repoNumber)
+    
+    var userDetail: Items? {
+        didSet {
+            repoNoLabel.text = String(userDetail?.publicRepos ?? 0)
         }
     }
     
-    func config(for user: User) {
+    func config(for user: Items) {
         userNameLabel.text = user.login
-        //MARK: - get repo no and image
         delegate?.getImage(imgStr: user.avatarURL, cell: self)
         delegate?.getUserDetails(str: user.url, cell: self)
-        
-//        viewModel.getImage(user.avatarURL) { [unowned self] imgData in
-//            if let data = imgData {
-//                self.avatarImageView.image = UIImage(data: data)
-//            }
-//        }
-//
-//        viewModel.fetchUserDetails(str: user.url) { [unowned self] detail in
-//            if let userDetail = detail {
-//                DispatchQueue.main.async {
-//                    self.repoNoLabel.text = String(userDetail.publicRepos ?? 0)
-//                }
-//            }
-//        }
     }
 }

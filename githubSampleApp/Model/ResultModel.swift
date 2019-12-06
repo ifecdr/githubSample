@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct UsersList: Codable {
+struct ResultModel: Codable {
     let totalCount: Int
     let incompleteResults: Bool
-    let items: [User]
+    let items: [Items]
     
     enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"

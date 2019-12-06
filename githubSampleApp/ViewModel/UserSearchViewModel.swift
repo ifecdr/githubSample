@@ -14,7 +14,7 @@ protocol UserSearchViewModelDelegate: class {
 
 class UserSearchViewModel {
     weak var delegate: UserSearchViewModelDelegate?
-    var searchedUsers = [User]() {
+    var searchedUsers = [Items]() {
         didSet{
             delegate?.reloadTable()
         }
@@ -24,11 +24,11 @@ class UserSearchViewModel {
         return searchedUsers.count
     }
     
-    func updateUsers(with detail: User, at index: Int) {
+    func updateUsers(with detail: Items, at index: Int) {
         searchedUsers[index] = detail
     }
     
-    func getUser(index: Int) -> User {
+    func getUser(index: Int) -> Items {
         return searchedUsers[index]
     }
     
@@ -44,7 +44,7 @@ class UserSearchViewModel {
         }
     }
     
-    func fetchUserDetails(str: String, completion: @escaping (User?) -> ()) {
+    func fetchUserDetails(str: String, completion: @escaping (Items?) -> ()) {
         ApiServices.shared.fetchUserDetails(urlStr: str) { result in
             switch result {
             case .success(let user):

@@ -19,13 +19,13 @@ final class ApiServices {
     private init() {
         let config = URLSessionConfiguration.default
         config.allowsCellularAccess = false
-        config.requestCachePolicy = .returnCacheDataElseLoad
+        //config.requestCachePolicy = .reloadIgnoringCacheData
         session = URLSession.init(configuration: config)
     }
     
-    func getUsers(_ userStr: String, completion: @escaping (Result<[User], Error>) -> ()) {
+    func getUsers(_ userStr: String, completion: @escaping (Result<[Items], Error>) -> ()) {
         if let urlStr = URL(string: ConstantUtils.getUsersUrl(userStr: userStr)) {
-            var itemArray = [User]()
+            var itemArray = [Items]()
             session.dataTask(with: urlStr) { (d, _, error) in
                 if let err = error {
                     completion(.failure(err))
@@ -33,7 +33,7 @@ final class ApiServices {
                 
                 if let data = d {
                     do {
-                        let responseData = try JSONDecoder().decode(UsersList.self, from: data)
+                        let responseData = try JSONDecoder().decode(ResultModel.self, from: data)
                         
                         for item in responseData.items {
                             itemArray.append(item)
@@ -47,7 +47,7 @@ final class ApiServices {
         }
     }
     
-    func fetchUserDetails(urlStr: String, completion: @escaping (Result<User, Error>) -> ()) {
+    func fetchUserDetails(urlStr: String, completion: @escaping (Result<Items, Error>) -> ()) {
         if let url = URL(string: urlStr) {
             session.dataTask(with: url) { (d, _, e) in
                 if let err = e {
@@ -56,7 +56,7 @@ final class ApiServices {
                 
                 if let data = d {
                     do {
-                        let responseData = try JSONDecoder().decode(User.self, from: data)
+                        let responseData = try JSONDecoder().decode(Items.self, from: data)
                         completion(.success(responseData))
                     } catch {
                         print("Error: \(error.localizedDescription)")
@@ -83,11 +83,13 @@ final class ApiServices {
         }.resume()
     }
     
-    func getRepos(_ strLink: String, completion: @escaping (Result<[Repos], Error>) -> ()) {
-        guard let url = URL(string: strLink) else {
+    func getRepos(_ searchKeyword: String, for userName : String,
+                  completion: @escaping (Result<[Items], Error>) -> ()) {
+        let urlStr = ConstantUtils.getSearchUrl(searchKeyword: searchKeyword, userKeyword: userName)
+        guard let url = URL(string: urlStr) else {
             return
         }
-        var repoArray = [Repos]()
+        var repoArray = [Items]()
         session.dataTask(with: url) { (d, _, error) in
             if let err = error {
                 completion(.failure(err))
@@ -95,8 +97,8 @@ final class ApiServices {
             
             if let data = d {
                 do {
-                    let responseData = try JSONDecoder().decode([Repos].self, from: data)
-                    for item in responseData {
+                    let responseData = try JSONDecoder().decode(ResultModel.self, from: data)
+                    for item in responseData.items {
                         repoArray.append(item)
                     }
                     completion(.success(repoArray))

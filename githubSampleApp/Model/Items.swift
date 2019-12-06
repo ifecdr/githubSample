@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Codable {
+struct Items: Codable {
     let login: String
     let id: Int
     let avatarURL: String
@@ -24,6 +24,7 @@ struct User: Codable {
     let publicRepos: Int?
     let followers: Int?
     let following: Int?
+    let forks: Int?
     
     enum CodingKeys: String, CodingKey {
         case login
@@ -41,5 +42,6 @@ struct User: Codable {
         case publicRepos = "public_repos"
         case followers
         case following
+        case forks
     }
 }

@@ -47,7 +47,12 @@ extension UserSearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.goToDetails(for: indexPath.row)
+        guard let cell = tableView.cellForRow(at: indexPath) as? UserTableViewCell else {
+            fatalError("")
+        }
+        if let detail = cell.userDetail {
+            coordinator?.goToDetails(for: detail)
+        }
     }
 }
 
@@ -80,15 +85,12 @@ extension UserSearchViewController: UserTableViewCellDelegate {
     }
     
     func getUserDetails(str: String, cell: UserTableViewCell) {
-        viewModel.fetchUserDetails(str: str) { [unowned self, unowned cell] user in
+        viewModel.fetchUserDetails(str: str) { [unowned cell] user in
             DispatchQueue.main.async {
-                
                 if let userData = user {
-                    //self.viewModel.updateUsers(with: userData, at: index.row)
-                    cell.repoNumber = userData.publicRepos ?? 0
+                    cell.userDetail = userData
                 }
             }
-            
         }
     }
 }

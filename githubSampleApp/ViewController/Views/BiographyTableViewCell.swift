@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BiographyTableViewCellDelegate: class {
-    func getRepos()
+    func getRepos(for searchStr: String)
     func getAvatar(img: String, completion: @escaping (Data?) -> ())
 }
 
@@ -28,7 +28,7 @@ class BiographyTableViewCell: UITableViewCell {
     static let identifier = "BiographyCell"
     weak var delegate: BiographyTableViewCellDelegate?
     
-    func config(for user: User) {
+    func config(for user: Items) {
         userNameLabel.text = user.login
         emailLabel.text = user.email ?? "No Email"
         locationLabel.text = user.location ?? "No Location"
@@ -37,6 +37,7 @@ class BiographyTableViewCell: UITableViewCell {
         following.text = String(user.following ?? 0)
         biography.text = user.bio ?? "No Bio Found for this user"
         getImage(imgStr: user.avatarURL)
+        searchBar.delegate = self
     }
     
     func getImage(imgStr: String) {
@@ -54,7 +55,7 @@ extension BiographyTableViewCell: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let searchKeyword = searchText.replacingOccurrences(of: " ", with: "+")
         if !searchKeyword.isEmpty {
-            delegate?.getRepos()
+            delegate?.getRepos(for: searchKeyword)
         }
     }
 }

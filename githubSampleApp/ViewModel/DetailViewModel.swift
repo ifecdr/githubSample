@@ -13,8 +13,8 @@ protocol DetailViewModelDelegate: class {
 }
 
 class DetailViewModel {
-    var user: User!
-    var repos: [Repos] = [Repos]() {
+    var user: Items!
+    var repos: [Items] = [Items]() {
         didSet {
             delegate?.reloadTable()
         }
@@ -25,7 +25,7 @@ class DetailViewModel {
         return repos.count
     }
     
-    func getUser() -> User {
+    func getUser() -> Items {
         return user
     }
     
@@ -35,12 +35,13 @@ class DetailViewModel {
         }
     }
     
-    func fetchRepos() {
-        let repoStr = user.reposURL
-        ApiServices.shared.getRepos(repoStr) { [unowned self] result in
+    func fetchRepos(for searchStr: String) {
+        let userName = user.login
+        ApiServices.shared.getRepos(searchStr, for: userName) { [unowned self] result in
             switch result {
             case .failure(let err):
-                fatalError("\(err.localizedDescription)")
+                print(err.localizedDescription)
+                return
             case .success(let reposArray):
                 self.repos = reposArray
             }
