@@ -14,8 +14,13 @@ struct ConstantUtils {
     static let users = "/users?q="
     static let sortByRepo = "+repos"
     static let greaterThan = ":%3E"
+    static let auth = "/authorizations"
     
     static func getUsersUrl(userStr: String) -> String {
         return base + search + users + userStr
+    }
+    
+    static func getAuthUrl() -> String {
+        return base + auth
     }
 }
