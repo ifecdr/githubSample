@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "1B0D2991-69CD-4B3C-B818-4BF8EA382F86"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E515ADE4-83EB-46C1-A67E-942645D860CE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "githubSampleApp/Services/ApiServices.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "getUsers(_:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0699F861-89D2-45C7-9CEC-D205CB010ED6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "githubSampleApp/Services/ApiServices.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "getUsers(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0699F861-89D2-45C7-9CEC-D205CB010ED6 - 5a15cd070556202"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "githubSampleApp.ApiServices.getUsers(_: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;githubSampleApp.Item&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "githubSampleApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iadesid/Documents/githubSampleApp/githubSampleApp/Services/ApiServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "516">
+               </Location>
+               <Location
+                  uuid = "0699F861-89D2-45C7-9CEC-D205CB010ED6 - 5dd53a360208276a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in githubSampleApp.ApiServices.getUsers(_: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;githubSampleApp.Item&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "githubSampleApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iadesid/Documents/githubSampleApp/githubSampleApp/Services/ApiServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "367">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
