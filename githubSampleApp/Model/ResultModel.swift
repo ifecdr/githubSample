@@ -9,8 +9,8 @@
 import Foundation
 
 struct ResultModel: Codable {
-    let totalCount: Int
-    let incompleteResults: Bool
+    let totalCount: Int?
+    let incompleteResults: Bool?
     let items: [Items]
     
     enum CodingKeys: String, CodingKey {

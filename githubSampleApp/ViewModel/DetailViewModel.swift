@@ -13,8 +13,13 @@ protocol DetailViewModelDelegate: class {
 }
 
 class DetailViewModel {
+    
+    var curTask: DispatchWorkItem!
+    var queue: DispatchQueue = .global(qos: .default)
+    var delay: TimeInterval = 0.35
+    
     var user: Items!
-    var repos: [Items] = [Items]() {
+    var repos: [Repos] = [Repos]() {
         didSet {
             delegate?.reloadTable()
         }
@@ -36,15 +41,19 @@ class DetailViewModel {
     }
     
     func fetchRepos(for searchStr: String) {
-        let userName = user.login
-        ApiServices.shared.getRepos(searchStr, for: userName) { [unowned self] result in
-            switch result {
-            case .failure(let err):
-                print(err.localizedDescription)
-                return
-            case .success(let reposArray):
-                self.repos = reposArray
+        curTask?.cancel()
+        curTask = DispatchWorkItem(block: { [unowned self] in
+            let userName = self.user.login
+            ApiServices.shared.getRepos(searchStr, for: userName) { result in
+                switch result {
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    return
+                case .success(let reposArray):
+                    self.repos = reposArray
+                }
             }
-        }
+        })
+        queue.asyncAfter(deadline: .now() + delay, execute: curTask)
     }
 }

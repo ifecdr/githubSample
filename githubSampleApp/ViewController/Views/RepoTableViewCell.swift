@@ -15,9 +15,9 @@ class RepoTableViewCell: UITableViewCell {
     @IBOutlet weak var starsLabel: UILabel!
     static let identifier = "RepoTableViewCell"
 
-    func config(item: Items) {
-        repoTitleLabel.text = item.name ?? ""
-        repoLabel.text = String(item.forks ?? 0)
-        //starsLabel.text = String(repo.stargazersCount)
+    func config(item: Repos) {
+        repoTitleLabel.text = item.name
+        repoLabel.text = String(item.forksCount)
+        starsLabel.text = String(item.stargazersCount)
     }
 }

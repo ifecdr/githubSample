@@ -32,9 +32,9 @@ class BiographyTableViewCell: UITableViewCell {
         userNameLabel.text = user.login
         emailLabel.text = user.email ?? "No Email"
         locationLabel.text = user.location ?? "No Location"
-        joinDataLabel.text = "No Date Found"
-        followers.text = String(user.followers ?? 0)
-        following.text = String(user.following ?? 0)
+        joinDataLabel.text = user.createdAt ?? ""
+        followers.text = "\(user.followers ?? 0) Followers"
+        following.text = "Following \(user.following ?? 0)"
         biography.text = user.bio ?? "No Bio Found for this user"
         getImage(imgStr: user.avatarURL)
         searchBar.delegate = self

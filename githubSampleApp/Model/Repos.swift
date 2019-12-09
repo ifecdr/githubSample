@@ -8,27 +8,18 @@
 
 import Foundation
 
-//struct Repos: Codable {
-//    let totalCount: Int
-//    let incompleteResults: Bool
-//    let items: [Item]
-//
-//    enum CodingKeys: String, CodingKey {
-//        case totalCount = "total_count"
-//        case incompleteResults = "incomplete_results"
-//        case items
-//    }
-//}
+struct ReposResponse: Codable {
+    let items: [Repos]
+}
 
 struct Repos: Codable {
     let id: Int
     let name, fullName: String
-    let welcomePrivate: Bool
     let owner: Owner
     let htmlURL: String
     let url: String
     let stargazersURL: String
-    let createdAt, updatedAt, pushedAt: Date
+    let createdAt, updatedAt, pushedAt: String
     let stargazersCount: Int
     let forksCount: Int
 
@@ -36,7 +27,6 @@ struct Repos: Codable {
         case id
         case name
         case fullName = "full_name"
-        case welcomePrivate = "private"
         case owner
         case htmlURL = "html_url"
         case url

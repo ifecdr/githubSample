@@ -19,6 +19,7 @@ class UserSearchViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
         setupSearchBar()
         viewModel.delegate = self
+        title = "GitHub Searcher"
     }
 
     func setupSearchBar() {

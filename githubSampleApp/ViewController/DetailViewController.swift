@@ -17,11 +17,13 @@ class DetailViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        //viewModel.fetchRepos()
     }
     
     func setup() {
+        viewModel.delegate = self
+        viewModel.repos.removeAll()
         tableView.estimatedRowHeight = UITableView.automaticDimension
+        title = "GitHub Searcher"
     }
 
 }
@@ -69,7 +71,11 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
         if section == 1 {
-            //Do something
+            let repo = viewModel.repos[indexPath.row]
+            let link = repo.htmlURL
+            if let url = URL(string: link) {
+                UIApplication.shared.open(url)
+            }
         }
     }
 }
@@ -87,7 +93,7 @@ extension DetailViewController: BiographyTableViewCellDelegate {
 extension DetailViewController: DetailViewModelDelegate {
     func reloadTable() {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.tableView.reloadSections([1], with: UITableView.RowAnimation.top)
         }
     }
 }

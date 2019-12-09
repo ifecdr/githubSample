@@ -11,9 +11,6 @@ import Foundation
 final class ApiServices {
     static let shared = ApiServices()
     
-    //private var enqueued = Set<String>()
-    //private let cache = NSCache<NSString, NSData>()
-    
     // create session allowing caching
     private let session: URLSession
     private init() {
@@ -60,6 +57,7 @@ final class ApiServices {
                         completion(.success(responseData))
                     } catch {
                         print("Error: \(error.localizedDescription)")
+                        completion(.failure(error))
                     }
                 }
             }.resume()
@@ -84,12 +82,11 @@ final class ApiServices {
     }
     
     func getRepos(_ searchKeyword: String, for userName : String,
-                  completion: @escaping (Result<[Items], Error>) -> ()) {
+                  completion: @escaping (Result<[Repos], Error>) -> ()) {
         let urlStr = ConstantUtils.getSearchUrl(searchKeyword: searchKeyword, userKeyword: userName)
         guard let url = URL(string: urlStr) else {
             return
         }
-        var repoArray = [Items]()
         session.dataTask(with: url) { (d, _, error) in
             if let err = error {
                 completion(.failure(err))
@@ -97,11 +94,8 @@ final class ApiServices {
             
             if let data = d {
                 do {
-                    let responseData = try JSONDecoder().decode(ResultModel.self, from: data)
-                    for item in responseData.items {
-                        repoArray.append(item)
-                    }
-                    completion(.success(repoArray))
+                    let responseData = try JSONDecoder().decode(ReposResponse.self, from: data)
+                    completion(.success(responseData.items))
                 } catch (let exn) {
                     completion(.failure(exn))
                 }

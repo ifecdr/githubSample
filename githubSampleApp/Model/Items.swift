@@ -25,6 +25,7 @@ struct Items: Codable {
     let followers: Int?
     let following: Int?
     let forks: Int?
+    let createdAt: String?
     
     enum CodingKeys: String, CodingKey {
         case login
@@ -43,5 +44,27 @@ struct Items: Codable {
         case followers
         case following
         case forks
+        case createdAt = "created_at"
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let value = try decoder.container(keyedBy: CodingKeys.self)
+        login = try value.decode(String.self, forKey: .login)
+        id = try value.decode(Int.self, forKey: .id)
+        avatarURL = try value.decode(String.self, forKey: .avatarURL)
+        url = try value.decode(String.self, forKey: .url)
+        htmlURL = try value.decode(String.self, forKey: .htmlURL)
+        followersURL = try value.decode(String.self, forKey: .followersURL)
+        followingURL = try value.decode(String.self, forKey: .followingURL)
+        reposURL = try value.decode(String.self, forKey: .reposURL)
+        name = try value.decodeIfPresent(String.self, forKey: .name)
+        location = try value.decodeIfPresent(String.self, forKey: .location)
+        email = try value.decodeIfPresent(String.self, forKey: .email)
+        bio = try value.decodeIfPresent(String.self, forKey: .bio)
+        publicRepos = try value.decodeIfPresent(Int.self, forKey: .publicRepos)
+        followers = try value.decodeIfPresent(Int.self, forKey: .followers)
+        following = try value.decodeIfPresent(Int.self, forKey: .following)
+        forks = try value.decodeIfPresent(Int.self, forKey: .forks)
+        createdAt = try value.decodeIfPresent(String.self, forKey: .createdAt)
     }
 }
